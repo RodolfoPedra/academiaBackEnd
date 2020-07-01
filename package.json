@@ -1,0 +1,26 @@
+{
+   "name": "academyapi",
+   "version": "0.0.1",
+   "description": "Awesome project developed with TypeORM.",
+   "devDependencies": {
+      "ts-node": "3.3.0",
+      "typescript": "^3.8.3",
+      "@types/express": "^4.17.6",
+      "body-parser": "^1.18.1",
+      "ts-node-dev": "^1.0.0-pre.44"
+   },
+   "dependencies": {
+      "@types/node": "^14.0.5",
+      "@types/cors": "^2.8.6",
+      "cors": "^2.8.5",
+      "express": "^4.17.1",
+      "pg": "^8.2.1",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.2.25"
+   },
+   "scripts": {
+      "dev": "ts-node-dev --inspect --transpileOnly --ignore-watch node_modules src/server.ts",
+      "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+      "start": "ts-node src/server.ts"
+   }
+}
