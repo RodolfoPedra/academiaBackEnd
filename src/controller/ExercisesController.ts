@@ -4,7 +4,6 @@ import Exercises from "../entity/Exercises";
 
 
 class ExercisesController {
-
     
     async create(req: Request, res: Response, next: NextFunction) {
         try {
@@ -41,6 +40,16 @@ class ExercisesController {
             console.log('erro ao buscar exercícios: ', error);                    
         }
 
+    }
+
+    async update(req: Request, res: Response, next: NextFunction) {
+        try {
+            const repo  = getRepository(Exercises);
+            const exercise = await repo.findOne(req.params.id);
+            await repo.update(exercise, req.body);
+        } catch (error) {
+            
+        }
     }
 
     // async one(request: Request, response: Response, next: NextFunction) {
