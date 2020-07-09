@@ -3,7 +3,7 @@ import {NextFunction, Request, Response} from "express";
 import RegisterStudent from "../entity/Register_Student";
 
 
-class ExercisesController {
+class RegisterStudentController {
     
     async create(req: Request, res: Response, next: NextFunction) {
         try {
@@ -63,4 +63,4 @@ class ExercisesController {
 
 }
 
-export default new ExercisesController();
+export default new RegisterStudentController();

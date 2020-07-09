@@ -3,13 +3,13 @@ import {NextFunction, Request, Response} from "express";
 import SpecsExercises from "../entity/Specs_Exercises";
 
 
-class ExercisesController {
+class SpecsExercisesController {
     
     async create(req: Request, res: Response, next: NextFunction) {
         try {
             const repo = getRepository(SpecsExercises);
-            const {name} = await repo.save(req.body);
-            return res.status(201).json({name})
+            const {name_specs} = await repo.save(req.body);
+            return res.status(201).json({name_specs})
         } catch (error) {
             console.log('erro ao criar especificações do exercício: ', error);        
         }
@@ -63,4 +63,4 @@ class ExercisesController {
 
 }
 
-export default new ExercisesController();
+export default new SpecsExercisesController();
