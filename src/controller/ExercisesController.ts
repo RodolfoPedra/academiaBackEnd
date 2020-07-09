@@ -1,6 +1,6 @@
 import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
-import Exercises from "../entity/Exercises";
+import Exercises from "../models/Exercises";
 
 
 class ExercisesController {
@@ -47,6 +47,7 @@ class ExercisesController {
             const repo = getRepository(Exercises);
             const exercise = await repo.findOne(req.params.id);
             await repo.remove(exercise);
+
             return res.json({ok: "Dados removidos com sucesso"});
         } catch (error) {
             console.log('erro ao remover exercícios: ', error);                    
@@ -56,9 +57,14 @@ class ExercisesController {
 
     async update(req: Request, res: Response, next: NextFunction) {
         try {
-            const repo  = getRepository(Exercises);
+            const repo = getRepository(Exercises);
             const exercise = await repo.findOne(req.params.id);
             await repo.update(exercise, req.body);
+
+            console.log(req.body);
+
+            return res.json({ok: "Alterado com Sucesso"});
+            
         } catch (error) {
             console.log('erro ao atualizar exercício: ', error);                                
         }

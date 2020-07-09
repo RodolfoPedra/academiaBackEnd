@@ -1,6 +1,6 @@
 import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
-import RegisterStudent from "../entity/Register_Student";
+import RegisterStudent from "../models/Register_Student";
 
 
 class RegisterStudentController {
@@ -56,6 +56,8 @@ class RegisterStudentController {
             const repo  = getRepository(RegisterStudent);
             const exercise = await repo.findOne(req.params.id);
             await repo.update(exercise, req.body);
+
+            return res.json({ok: "Alterado com Sucesso"});
         } catch (error) {
             console.log('erro ao atualizar registro de aluno: ', error);                                
         }

@@ -1,6 +1,6 @@
 import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
-import GroupExercises from "../entity/Group_Exercises";
+import GroupExercises from "../models/Group_Exercises";
 
 
 class GroupExercisesController {
@@ -47,6 +47,7 @@ class GroupExercisesController {
             const repo = getRepository(GroupExercises);
             const exercise = await repo.findOne(req.params.id);
             await repo.remove(exercise);
+            
             return res.json({ok: "Dados removidos com sucesso"});
         } catch (error) {
             console.log('erro ao remover grupo de exercícios: ', error);                    
@@ -59,6 +60,8 @@ class GroupExercisesController {
             const repo  = getRepository(GroupExercises);
             const exercise = await repo.findOne(req.params.id);
             await repo.update(exercise, req.body);
+
+            return res.json({ok: "Alterado com Sucesso"});
         } catch (error) {
             console.log('erro ao atualizar grupo de exercícios: ', error);                                
         }
