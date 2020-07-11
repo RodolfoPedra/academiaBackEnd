@@ -1,4 +1,6 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany} from 'typeorm';
+import GroupExercises from './Group_Exercises';
+import { type } from 'os';
 
 @Entity('exercises')
 export default class Exercises { 
@@ -19,4 +21,7 @@ export default class Exercises {
 
     @UpdateDateColumn({name: 'updated_At'})
     updateAt: Date;
+
+    @OneToMany(type => GroupExercises, groupExercises => groupExercises.id)
+    id_group_exercises: GroupExercises;
 }
