@@ -1,4 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne} from 'typeorm';
+import Exercises from './Exercises';
 
 @Entity('specs_exercises')
 class SpecsExercises { 
@@ -30,7 +31,10 @@ class SpecsExercises {
     charge: number;
 
     @Column()
-    observation: string
+    observation: string;
+
+    @ManyToOne(type =>  Exercises, specs => SpecsExercises)
+    exercise: Exercises;
 
     @CreateDateColumn({name: 'created_At'})
     createdAt: Date;
