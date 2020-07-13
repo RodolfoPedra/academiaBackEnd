@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, JoinColumn} from 'typeorm';
 import Exercises from './Exercises';
 import { type } from 'os';
 
@@ -10,11 +10,14 @@ class GroupExercises {
 
     @Column({
         nullable: false
-    })
+    }) 
     name_group: string
 
     @Column()
     description_group: string
+
+    @OneToMany(type => Exercises, groupExercises => GroupExercises)
+    exercise: Exercises[];
 
     @CreateDateColumn({name: 'created_At'})
     createdAt: Date;

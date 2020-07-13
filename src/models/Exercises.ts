@@ -3,7 +3,7 @@ import GroupExercises from './Group_Exercises';
 import { type } from 'os';
 
 @Entity('exercises')
-export default class Exercises { 
+class Exercises { 
 
     @PrimaryGeneratedColumn('increment')
     id: number;
@@ -11,17 +11,19 @@ export default class Exercises {
     @Column({
         nullable: false
     })
-    name_exercise: string
+    name_exercise: string;
 
     @Column()
-    description_exercise: string
+    description_exercise: string;
+
+    @ManyToOne(type => GroupExercises, exercise => Exercises, {eager: true})
+    groupExercises: GroupExercises;
 
     @CreateDateColumn({name: 'created_At'})
     createdAt: Date;
 
     @UpdateDateColumn({name: 'updated_At'})
     updateAt: Date;
-
-    @OneToMany(type => GroupExercises, groupExercises => groupExercises.id)
-    id_group_exercises: GroupExercises;
 }
+
+export default Exercises;

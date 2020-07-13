@@ -1,7 +1,9 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany} from 'typeorm';
+import Adresses from './Adresses';
+import { type } from 'os';
 
 @Entity('register_student')
-class SpecsExercises { 
+class Register_Student { 
 
     @PrimaryGeneratedColumn('increment')
     id: number;
@@ -11,34 +13,21 @@ class SpecsExercises {
     })
     name: string
 
-    @Column()
-    responsible: string
-
     @Column({
         nullable: false
     })
     age: number;
 
     @Column()
-    databirth: Date;
+    responsible: string;
+
+    @Column({
+        nullable: false
+    })
+    ageResponsible: number;
 
     @Column()
-    cep: string
-
-    @Column({
-        nullable: false
-    })
-    neighborhood: string
-
-    @Column({
-        nullable: false
-    })
-    street: string
-
-    @Column({
-        nullable: false
-    })
-    number: number;
+    databirth: Date;
 
     @Column()
     email: string
@@ -58,13 +47,11 @@ class SpecsExercises {
     })
     cellphoneEmergency: string
 
-    @Column({
-        nullable: false
-    })
-    charge: number;
-
     @Column()
     observation: string
+
+    @OneToMany(type => Adresses, student => Register_Student, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    adress: Adresses[];
 
     @CreateDateColumn({name: 'created_At'})
     createdAt: Date;
@@ -73,4 +60,4 @@ class SpecsExercises {
     updateAt: Date;
 }
 
-export default SpecsExercises;
+export default Register_Student;
