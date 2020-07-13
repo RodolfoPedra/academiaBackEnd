@@ -1,6 +1,5 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany} from 'typeorm';
 import Adresses from './Adresses';
-import { type } from 'os';
 
 @Entity('register_student')
 class Register_Student { 

@@ -1,6 +1,5 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, JoinColumn} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, JoinColumn, ManyToMany, JoinTable} from 'typeorm';
 import Exercises from './Exercises';
-import { type } from 'os';
 
 @Entity('group_exercises')
 class GroupExercises { 
@@ -16,7 +15,8 @@ class GroupExercises {
     @Column()
     description_group: string
 
-    @OneToMany(type => Exercises, groupExercises => GroupExercises)
+    @ManyToMany(type => Exercises)
+    @JoinTable()
     exercise: Exercises[];
 
     @CreateDateColumn({name: 'created_At'})
