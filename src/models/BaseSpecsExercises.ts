@@ -1,8 +1,6 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne} from 'typeorm';
-import Exercises from './Exercises';
 
-@Entity('specs_exercises')
-class SpecsExercises { 
+abstract class BaseSpecsExercises { 
 
     @PrimaryGeneratedColumn('increment')
     id: number;
@@ -33,9 +31,6 @@ class SpecsExercises {
     @Column()
     observation: string;
 
-    @ManyToOne(type =>  Exercises, specs => SpecsExercises)
-    exercise: Exercises;
-
     @CreateDateColumn({name: 'created_At'})
     createdAt: Date;
 
@@ -43,4 +38,4 @@ class SpecsExercises {
     updateAt: Date;
 }
 
-export default SpecsExercises;
+export default BaseSpecsExercises;

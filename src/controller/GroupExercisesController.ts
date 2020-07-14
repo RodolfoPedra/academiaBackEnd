@@ -1,6 +1,6 @@
 import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
-import GroupExercises from "../models/Group_Exercises";
+import GroupExercises from "../models/GroupExercises";
 
 
 class GroupExercisesController {

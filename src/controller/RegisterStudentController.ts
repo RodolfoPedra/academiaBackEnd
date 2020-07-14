@@ -1,6 +1,6 @@
 import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
-import RegisterStudent from "../models/Register_Student";
+import RegisterStudent from "../models/RegisterStudent";
 
 
 class RegisterStudentController {

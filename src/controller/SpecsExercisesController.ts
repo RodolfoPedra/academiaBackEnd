@@ -1,6 +1,6 @@
 import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
-import SpecsExercises from "../models/Specs_Exercises";
+import SpecsExercises from "../models/SpecsExercises";
 
 
 class SpecsExercisesController {

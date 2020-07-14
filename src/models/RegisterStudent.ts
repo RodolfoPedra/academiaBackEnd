@@ -2,7 +2,7 @@ import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColu
 import Adresses from './Adresses';
 
 @Entity('register_student')
-class Register_Student { 
+class RegisterStudent { 
 
     @PrimaryGeneratedColumn('increment')
     id: number;
@@ -49,7 +49,7 @@ class Register_Student {
     @Column()
     observation: string
 
-    @OneToMany(type => Adresses, student => Register_Student, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    @OneToMany(type => Adresses, student => RegisterStudent, {onDelete: "CASCADE", onUpdate: "CASCADE"})
     adress: Adresses[];
 
     @CreateDateColumn({name: 'created_At'})
@@ -59,4 +59,4 @@ class Register_Student {
     updateAt: Date;
 }
 
-export default Register_Student;
+export default RegisterStudent;
