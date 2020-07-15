@@ -1,17 +1,20 @@
 import {getRepository} from "typeorm";
 import {NextFunction, Request, Response} from "express";
 import Exercises from "../models/Exercises";
+import GroupExercises from "../models/GroupExercises";
 
-class ExercisesController {
+class GroupAndExercises {
     
     async create(req: Request, res: Response, next: NextFunction) {
         try {
-            const repo = getRepository(Exercises);
-            const {name_exercise, description_exercise} = await repo.save(req.body);
-            return res.status(201).json({
-                name_exercise,
-                description_exercise
-            })
+            const repoExercises = getRepository(Exercises);
+            const repoGroups = getRepository(GroupExercises);
+
+            const group = await repoGroups.findOne(req.params.id);
+            group.exercise = req.body.id;
+
+            await repoGroups.save(group);
+            return res.status(201).json(group);
         } catch (error) {
             console.log('erro ao criar exercício: ', error);        
         }
@@ -70,4 +73,4 @@ class ExercisesController {
 
 }
 
-export default new ExercisesController();
+export default new GroupAndExercises();

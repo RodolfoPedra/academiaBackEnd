@@ -16,7 +16,7 @@ class GroupExercises {
     @Column()
     description_group: string
 
-    @ManyToMany(type => Exercises)
+    @ManyToMany(type => Exercises, {cascade: true})
     @JoinTable()
     exercise: Exercises[];
 
