@@ -2,6 +2,8 @@ import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColu
 import GroupExercises from './GroupExercises';
 import SpecsExercises from './SpecsExercises';
 import SpecsExercisesStudent from './SpecsExercisesStudent';
+import GroupExerciseStudent from './GroupExerciseStudent';
+
 
 @Entity('exercises')
 class Exercises { 
@@ -23,6 +25,9 @@ class Exercises {
 
     @OneToMany(type => SpecsExercisesStudent, exercise => Exercises, {onDelete: "CASCADE", onUpdate: "CASCADE"})
     specsStudent: SpecsExercisesStudent[];
+
+    @OneToMany(type => GroupExerciseStudent, exercise => Exercises)
+    groupExerciseStudent: GroupExerciseStudent[];
 
     @CreateDateColumn({name: 'created_At'})
     createdAt: Date;
