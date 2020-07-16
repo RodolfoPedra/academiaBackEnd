@@ -10,11 +10,16 @@ class GroupAndExercises {
             const repoExercises = getRepository(Exercises);
             const repoGroups = getRepository(GroupExercises);
 
+            const exercise = await repoExercises.findByIds(req.body.id);
             const group = await repoGroups.findOne(req.params.id);
-            group.exercise = req.body.id;
 
-            await repoGroups.save(group);
+            for(let iten of exercise) {
+                group.exercise = [iten];
+                await repoGroups.save(group);
+            }
+
             return res.status(201).json(group);
+            
         } catch (error) {
             console.log('erro ao criar exercício: ', error);        
         }
