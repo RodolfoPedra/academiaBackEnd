@@ -1,8 +1,9 @@
-import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany} from 'typeorm';
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, OneToMany, ManyToMany} from 'typeorm';
 import GroupExercises from './GroupExercises';
 import SpecsExercises from './SpecsExercises';
 import SpecsExercisesStudent from './SpecsExercisesStudent';
 import GroupExerciseStudent from './GroupExerciseStudent';
+import { group } from 'console';
 
 
 @Entity('exercises')
@@ -28,6 +29,9 @@ class Exercises {
 
     @OneToMany(type => GroupExerciseStudent, exercise => Exercises)
     groupExerciseStudent: GroupExerciseStudent[];
+
+    // @ManyToMany(type => GroupExercises, group => group.exercise, {cascade: true})
+    // groupExercises: GroupExercises;
 
     @CreateDateColumn({name: 'created_At'})
     createdAt: Date;
