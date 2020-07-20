@@ -30,9 +30,6 @@ class Exercises {
     @OneToMany(type => GroupExerciseStudent, exercise => Exercises)
     groupExerciseStudent: GroupExerciseStudent[];
 
-    // @ManyToMany(type => GroupExercises, group => group.exercise, {cascade: true})
-    // groupExercises: GroupExercises;
-
     @CreateDateColumn({name: 'created_At'})
     createdAt: Date;
 
