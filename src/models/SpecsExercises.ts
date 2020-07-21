@@ -5,7 +5,7 @@ import Exercises from './Exercises';
 @Entity('specs_exercises')
 class SpecsExercises extends BaseSpecsExercises { 
 
-    @ManyToOne(type =>  Exercises, specs => SpecsExercises)
+    @ManyToOne(type =>  Exercises, specs => specs.specs)
     exercise: Exercises;
 }
 

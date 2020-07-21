@@ -21,13 +21,13 @@ class Exercises {
     @Column()
     description_exercise: string;
 
-    @OneToMany(type => SpecsExercises, exercise => Exercises, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    @OneToMany(type => SpecsExercises, exercise => exercise.exercise, {onDelete: "CASCADE", onUpdate: "CASCADE"})
     specs: SpecsExercises[];
 
-    @OneToMany(type => SpecsExercisesStudent, exercise => Exercises, {onDelete: "CASCADE", onUpdate: "CASCADE"})
+    @OneToMany(type => SpecsExercisesStudent, exercise => exercise.exercise, {onDelete: "CASCADE", onUpdate: "CASCADE"})
     specsStudent: SpecsExercisesStudent[];
 
-    @OneToMany(type => GroupExerciseStudent, exercise => Exercises)
+    @OneToMany(type => GroupExerciseStudent, exercise => exercise.exercise)
     groupExerciseStudent: GroupExerciseStudent[];
 
     @CreateDateColumn({name: 'created_At'})

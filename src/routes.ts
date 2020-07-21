@@ -4,6 +4,7 @@ import GroupExercisesController from './controller/GroupExercisesController';
 import RegisterStudentController from './controller/RegisterStudentController';
 import SpecsExercisesController from './controller/SpecsExercisesController';
 import GroupAndExercises from './controller/GroupAndExercises';
+import ExerciseAndSpecs from './controller/ExerciseAndSpecs';
 
 const routes = Router();
 
@@ -29,8 +30,11 @@ routes.post('/especificao-exercicio', SpecsExercisesController.create);
 routes.delete('/especificao-exercicio/:id', SpecsExercisesController.remove);
 routes.put('/especificao-exercicio/:id', SpecsExercisesController.update);
 
-routes.post('/teste/:id', GroupAndExercises.create);
-routes.delete('/teste/:id', GroupAndExercises.remove);
+routes.post('/relacao-grupo/:id', GroupAndExercises.create);
+routes.delete('/relacao-grupo/:id', GroupAndExercises.remove);
+
+routes.post('/relacao-exercicio/:id', ExerciseAndSpecs.create);
+// routes.delete('/relacao-exercicio/:id', ExerciseAndSpecs.remove);
 
 
 export default routes;
