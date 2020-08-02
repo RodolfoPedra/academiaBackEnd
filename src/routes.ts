@@ -1,4 +1,4 @@
-import {Router} from 'express';
+import { Router } from 'express';
 import ExercisesController from './controller/ExercisesController';
 import GroupExercisesController from './controller/GroupExercisesController';
 import RegisterStudentController from './controller/RegisterStudentController';
@@ -34,8 +34,7 @@ routes.post('/relacao-grupo/:id', GroupAndExercises.create);
 routes.delete('/relacao-grupo/:id', GroupAndExercises.remove);
 
 routes.post('/relacao-exercicio/:id', ExerciseAndSpecs.create);
+routes.get('/relacao-exercicio/:id', ExerciseAndSpecs.store);
 // routes.delete('/relacao-exercicio/:id', ExerciseAndSpecs.remove);
 
-
 export default routes;
-
